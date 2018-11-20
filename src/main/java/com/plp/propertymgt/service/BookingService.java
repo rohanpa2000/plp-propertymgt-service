@@ -31,7 +31,7 @@ public class BookingService {
 	@Path("/getbookings/{date}")
 	public Response getBookings(@PathParam("date") String date) throws ParseException{
 		
-		System.out.println(">>>>>>>>>>get booking  test");
+		System.out.println(">>>>>>>>>>get booking two test");
 		
 		Date bookingDate = new SimpleDateFormat( "yyyyMMdd" ).parse( date);
 		List<Booking> bookings =  bookingBusiness.getBookings(bookingDate);
