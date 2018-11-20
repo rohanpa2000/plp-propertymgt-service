@@ -4,6 +4,7 @@
 /target
 
 # misc
+dependency-reduced-pom.xml
 .DS_Store
 .env.local
 .env.development.local
