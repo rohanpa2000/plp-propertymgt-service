@@ -30,9 +30,7 @@ public class BookingService {
 	@GET
 	@Path("/getbookings/{date}")
 	public Response getBookings(@PathParam("date") String date) throws ParseException{
-		
-		System.out.println(">>>>>>>>>>get booking two test two");
-		
+				
 		Date bookingDate = new SimpleDateFormat( "yyyyMMdd" ).parse( date);
 		List<Booking> bookings =  bookingBusiness.getBookings(bookingDate);
 		
@@ -45,7 +43,6 @@ public class BookingService {
 	@GET
 	@Path("/getlastincidents")
 	public Response getLastIncidents() throws ParseException{
-		System.out.println(">>>>>>>>>>get last incidets");
 		List<Incident> incidents =  bookingBusiness.getLastIncidents();
 		
 		Gson gson = new GsonBuilder().setDateFormat("yyyyMMddHHmmss").create();
@@ -59,8 +56,6 @@ public class BookingService {
 	@Path("/add")
 	@Consumes("application/json")
     public Response addBooking(Object bookingObject) throws ParseException {
-		
-		System.out.println("add booking");
 		
 		if (bookingObject.getClass() == ArrayList.class)
 		{
@@ -116,8 +111,6 @@ public class BookingService {
         		.header("Access-Control-Allow-Methods", "POST")
         		.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
     }
-
-	
 
 	
 	@OPTIONS
