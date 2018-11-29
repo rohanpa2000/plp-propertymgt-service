@@ -37,7 +37,7 @@ public class MemberService {
 	}
 	
 	@OPTIONS
-	@POST
+	@POST 
 	@Path("/add")
 	@Consumes("application/json")
     public Response addBooking(Object memberObject) throws ParseException {

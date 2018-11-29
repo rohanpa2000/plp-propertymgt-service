@@ -22,7 +22,7 @@ import com.plp.motiondetection.model.Incident;
 import com.plp.propertymgt.business.BookingBusiness;
 import com.plp.propertymgt.model.Booking;
 
-@Path("/bookings")
+@Path("/bookings") 
 public class BookingService {
 	
 	BookingBusiness bookingBusiness = new BookingBusiness();
