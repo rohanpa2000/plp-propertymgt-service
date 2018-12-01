@@ -13,7 +13,7 @@ public class App
     public static void main( String[] args ) throws ParseException
     {
         new MicroservicesRunner(9022)
-        .deploy(new BookingService())
+        .deploy(new BookingService(), new MemberService())
         .start();
      }
 }

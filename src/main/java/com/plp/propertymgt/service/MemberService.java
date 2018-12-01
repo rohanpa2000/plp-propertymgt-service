@@ -26,7 +26,7 @@ public class MemberService {
 	
 	@GET
 	@Path("/get/{tenantid}")
-	public Response getBookings(@PathParam("tenantid") int tenantid) throws ParseException{
+	public Response getMembers(@PathParam("tenantid") int tenantid) throws ParseException{
 				
 		List<Member> members =  memberBusiness.getMembers(tenantid);
 		
@@ -40,7 +40,7 @@ public class MemberService {
 	@POST 
 	@Path("/add")
 	@Consumes("application/json")
-    public Response addBooking(Object memberObject) throws ParseException {
+    public Response addMember(Object memberObject) throws ParseException {
 		
 		if (memberObject.getClass() == ArrayList.class)
 		{
