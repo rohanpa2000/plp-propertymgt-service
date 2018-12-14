@@ -28,11 +28,12 @@ public class BookingService {
 	BookingBusiness bookingBusiness = new BookingBusiness();
 	
 	@GET
-	@Path("/getbookings/{date}")
-	public Response getBookings(@PathParam("date") String date) throws ParseException{
+	@Path("/getbookings/{date}/{tenantId}")
+	public Response getBookings(@PathParam("date") String date, 
+								@PathParam("tenantId") int tenantId) throws ParseException{
 				
 		Date bookingDate = new SimpleDateFormat( "yyyyMMdd" ).parse( date);
-		List<Booking> bookings =  bookingBusiness.getBookings(bookingDate);
+		List<Booking> bookings =  bookingBusiness.getBookings(bookingDate, tenantId);
 		
 		Gson gson = new GsonBuilder().setDateFormat("yyyyMMddHHmmss").create();
 		String json =  gson.toJson(bookings);
@@ -99,7 +100,15 @@ public class BookingService {
 					Booking booking = Booking.getFromLinkedTreeMap(linkedTree);
 					bookings.add(booking);
 				}
-				bookingBusiness.deleteBookings(bookings);
+				
+				int tenantid = 0;
+				
+				if (bookings.size() > 0){
+					tenantid = bookings.get(0).getTenantId();
+				}
+
+				
+				bookingBusiness.deleteBookings(bookings, tenantid);
 			}
 			catch (Exception e){
 				e.printStackTrace();
